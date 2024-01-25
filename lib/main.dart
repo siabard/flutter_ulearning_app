@@ -6,7 +6,7 @@ void main() {
 }
 
 // Create Provider
-final appCounter = Provider<int>((ref) {
+final appCounter = StateProvider<int>((ref) {
   return 1;
 });
 
@@ -33,31 +33,68 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(appCounter);
+    var count = ref.watch(appCounter);
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(this.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(this.title),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'You have pushed the button this many times:',
+              ),
+              Text(
+                '$count',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            FloatingActionButton(
+              heroTag: "one",
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => SecondPage()));
+              },
+              tooltip: 'Increment',
+              child: const Icon(Icons.arrow_right_rounded),
             ),
-            Text(
-              '$count',
-              style: Theme.of(context).textTheme.headlineMedium,
+            FloatingActionButton(
+              heroTag: "two",
+              onPressed: () {
+                ref.read(appCounter.notifier).state++;
+              },
+              tooltip: 'Increment',
+              child: const Icon(Icons.add),
             ),
           ],
+        ));
+  }
+}
+
+class SecondPage extends ConsumerWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    int count = ref.watch(appCounter);
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Text(
+          "$count",
+          style: TextStyle(
+            fontSize: 30,
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
