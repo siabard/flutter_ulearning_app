@@ -36,7 +36,7 @@ Widget text14Normal({
 }) {
   return Text(
     text,
-    textAlign: TextAlign.center,
+    textAlign: TextAlign.start,
     style: TextStyle(
       color: color,
       fontSize: 14,
