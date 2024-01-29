@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 
 Widget appOnboardingPage({
   required PageController controller,
@@ -40,12 +39,7 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
           curve: Curves.easeIn,
         );
       } else {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SignIn(),
-          ),
-        );
+        Navigator.pushNamed(context, "/signIn");
       }
     },
     child: Container(

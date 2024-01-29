@@ -1,7 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ulearning_app/common/widgets/text_widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/pages/notifier/welcome_notifier.dart';
 import 'package:ulearning_app/pages/welcome/widgets.dart';
 
@@ -19,7 +19,7 @@ class Welcome extends ConsumerWidget {
         child: Scaffold(
           backgroundColor: Colors.white,
           body: Container(
-            margin: EdgeInsets.only(top: 30),
+            margin: EdgeInsets.only(top: 30.h),
             child: Stack(
               alignment: Alignment.topCenter,
               children: [
@@ -65,6 +65,7 @@ class Welcome extends ConsumerWidget {
                   },
                 ),
                 Positioned(
+                  bottom: 50.h,
                   child: DotsIndicator(
                     position: index,
                     dotsCount: 3,
@@ -75,7 +76,6 @@ class Welcome extends ConsumerWidget {
                         activeShape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5))),
                   ),
-                  bottom: 50,
                 ),
               ],
             ),
