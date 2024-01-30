@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
@@ -17,12 +18,12 @@ Widget appOnboardingPage({
       fit: BoxFit.fitWidth,
     ),
     Container(
-      margin: EdgeInsets.only(top: 15),
+      margin: EdgeInsets.only(top: 15.h),
       child: text24Normal(text: title),
     ),
     Container(
-      margin: EdgeInsets.only(top: 15),
-      padding: EdgeInsets.only(left: 30, right: 30),
+      margin: EdgeInsets.only(top: 15.h),
+      padding: EdgeInsets.only(left: 30.w, right: 30.w),
       child: text16Normal(text: subTitle),
     ),
     _nextButton(index, controller, context),
@@ -43,8 +44,8 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
       }
     },
     child: Container(
-      width: 325,
-      height: 50,
+      width: 325.w,
+      height: 50.h,
       margin: const EdgeInsets.only(
         top: 100,
         left: 25,
